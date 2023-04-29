@@ -3,11 +3,12 @@ import LabelInput from "../../components/LabelInput/LabelInput";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
-import styles from "./LoginPage.module.scss";
+import styles from "./AuthPage.module.scss";
 
 function LoginPage() {
 	function login(e) {
 		e.preventDefault();
+		console.log("вход");
 	}
 
 	return (
@@ -27,9 +28,9 @@ function LoginPage() {
 						inputType="password"
 						inputPlaceholder="Введите пароль"
 					/>
-					<a href="#" className={styles.formSecondary}>
+					<Link className={styles.formSecondary} to="/password-reset">
 						Забыли пароль?
-					</a>
+					</Link>
 				</div>
 				<Button text="Войти" />
 				<Link
