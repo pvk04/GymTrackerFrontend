@@ -1,0 +1,11 @@
+@import "/src/scss/colors.scss";
+@import "/src/scss/fonts.scss";
+
+button{
+    @include bold-font;
+    height: 45px;
+    color: white;
+    background: $auth-color;
+    border-radius: 10px;
+    cursor: pointer;
+}

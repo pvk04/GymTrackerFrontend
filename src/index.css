@@ -1,0 +1,19 @@
+@import-normalize;
+
+body{
+    background: #EDEEF0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input, div{
+    box-sizing: border-box;
+}
+
+button{
+    border: none;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('./assets/fonts/Montserrat.ttf') format('ttf');
+}
