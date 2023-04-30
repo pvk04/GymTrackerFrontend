@@ -1,8 +1,19 @@
 @import "/src/scss/colors.scss";
 
+.container{
+    display: flex;
+}
+
+.illustration{
+    display: inline-block;
+    border-radius: 0 10px 10px 0;
+}
+
 .form{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 77px 91px;
     min-width: 435px;
     &Header{
         margin: 0 auto 50px auto;
