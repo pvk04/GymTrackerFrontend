@@ -2,11 +2,42 @@
 @import "/src/scss/fonts.scss";
 
 .aside{
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 270px;
     padding: 20px 16px 40px 16px;
     background: $nav-background;
     border-radius: 10px 0 0 10px;
+}
+
+.logo{
+    position: relative;
+    display: flex;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    align-items: center;
+    & img{
+        height: 40px;
+        width: 40px;
+    }
+    & h1{
+        margin-left: 5px;
+        @include bold-font;
+        font-size: 20px;
+        line-height: 24px;
+        color: white;
+    }
+    &::after{
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        content: "";
+        background-color: $nav-active;
+    }
 }
 
 .nav{
@@ -41,11 +72,32 @@
             }
             &Active{
                 background: $nav-active;
-                color: $nav-text-active;
                 & img{
                     filter: invert(100%) sepia(0%) saturate(19%) hue-rotate(334deg) brightness(105%) contrast(100%);
                 }
+                & span{
+                    display: inline-flex;
+                    align-items: center;
+                    color: $nav-text-active;
+                }
             }
         } 
+    }
+}
+
+.logout{
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    background: none;
+    color: #FF0000;
+    cursor: pointer;
+    & img{
+        height: 24px;
+        width: 24px;
+    }
+    & span{
+        @include regular-font;
+        margin-left: 13px;
     }
 }
