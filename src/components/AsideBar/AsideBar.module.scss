@@ -1,0 +1,51 @@
+@import "/src/scss/colors.scss";
+@import "/src/scss/fonts.scss";
+
+.aside{
+    height: 100%;
+    width: 270px;
+    padding: 20px 16px 40px 16px;
+    background: $nav-background;
+    border-radius: 10px 0 0 10px;
+}
+
+.nav{
+    &List{
+        @include regular-font;
+        line-height: 22px;
+       &Element{
+            display: flex;
+            height: 50px;
+            margin-bottom: 5px;
+            align-items: center;
+            list-style-type: none;
+            & a{
+                width: 100%;
+                display: flex;
+                padding: 13px 0 13px 8px;
+                border-radius: 10px;
+                text-decoration: none;
+            }
+            & img{
+                height: 24px;
+                width: 24px;
+                display: inline-block;
+                vertical-align: middle;
+                filter: $nav-not-active;
+            }
+            & span{
+                margin-left: 13px;
+                display: inline-flex;
+                align-items: center;
+                color: $nav-text-not-active;
+            }
+            &Active{
+                background: $nav-active;
+                color: $nav-text-active;
+                & img{
+                    filter: invert(100%) sepia(0%) saturate(19%) hue-rotate(334deg) brightness(105%) contrast(100%);
+                }
+            }
+        } 
+    }
+}

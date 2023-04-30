@@ -1,14 +1,14 @@
 @import "/src/scss/fonts.scss";
 @import "/src/scss/colors.scss";
 
-input{
+.label {
+    margin-top: 0;
+}
+
+.input{
     @include regular-font;
     width: 100%;
     padding: 15px 20px;
     border: 1px solid #000000;
     border-radius: 10px;
-}
-
-p{
-    margin-top: 0;
 }

@@ -17,6 +17,7 @@ function LabelInput({
 				{label}
 			</p>
 			<input
+				className={styles.input}
 				type={inputType}
 				placeholder={inputPlaceholder}
 				value={inputValue}

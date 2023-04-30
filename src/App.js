@@ -1,17 +1,18 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/AuthPage/LoginPage";
 import RegisterPage from "./pages/AuthPage/RegisterPage";
-import HomePage from "./pages/HomePage/HomePage";
+import MainPage from "./pages/MainPage/MainPage";
 
 function App() {
 	return (
 		<Routes>
 			<Route
 				exact
-				path="/"
-				element={
-					!false ? <Navigate to="/login" replace /> : <HomePage />
-				}
+				path="/*"
+				// element={
+				// 	!false ? <Navigate to="/login" replace /> : <HomePage />
+				// }
+				element={<MainPage />}
 			/>
 			<Route
 				exact

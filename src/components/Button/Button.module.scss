@@ -1,7 +1,7 @@
 @import "/src/scss/colors.scss";
 @import "/src/scss/fonts.scss";
 
-button{
+.button{
     @include bold-font;
     height: 45px;
     color: white;

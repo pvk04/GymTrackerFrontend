@@ -1,11 +1,25 @@
 @import-normalize;
 
-body{
+html, body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
     background: #EDEEF0;
     font-family: 'Montserrat', sans-serif;
 }
 
-input, div{
+#root,
+#root>div {
+    height: 100%
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+input, div, aside, nav{
     box-sizing: border-box;
 }
 
