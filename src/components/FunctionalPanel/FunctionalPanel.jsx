@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route, useHref } from "react-router-dom";
+import React from "react";
+import { Routes, Route, useHref, Navigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 
 import styles from "./FunctionalPanel.module.scss";
@@ -18,6 +18,7 @@ function FunctionalPanel() {
 		<div className={styles.wrap}>
 			<h1 className={styles.title}>{titles[currentPage]}</h1>
 			<Routes>
+				<Route path="*" element={<Navigate to="/profile" />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/workouts" element={<span>workouts</span>} />
 				<Route path="/exercises" element={<span>exercises</span>} />

@@ -60,7 +60,11 @@ function RegisterPage() {
 						Вход
 					</Link>
 				</form>
-				<img className={styles.illustration} src={illustration} alt="running man illustration" />
+				<img
+					className={styles.illustration}
+					src={illustration}
+					alt="running man illustration"
+				/>
 			</div>
 		</Modal>
 	);

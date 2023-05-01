@@ -5,7 +5,7 @@ import Button from "../../components/Button/Button";
 
 import styles from "./AuthPage.module.scss";
 
-import illustration from "../../assets/images/loginIllustrayion.png";
+import illustration from "../../assets/images/loginIllustration.png";
 
 function LoginPage() {
 	function login(e) {
