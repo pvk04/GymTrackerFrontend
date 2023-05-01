@@ -1,0 +1,40 @@
+@import "../../scss/fonts.scss";
+
+.wrap{
+    display: block;
+    margin-bottom: 25px;
+}
+
+.measure{
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    text-align: center;
+    &Name{
+        @include bold-font;
+        display: flex;
+        margin-right: 5px;
+    }
+    &Edit{
+        display: flex;
+        margin-left: 5px;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.measureType{
+    display: flex;
+
+    &s{
+        display: flex;
+        margin-left: 20px;
+        input{
+            margin-right: 2px;
+            border-radius: 0;
+        }
+        label{
+            margin-right: 15px;
+        }
+    }
+}

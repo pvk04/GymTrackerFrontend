@@ -10,14 +10,14 @@ function App() {
 				exact
 				path="/*"
 				// element={
-				// 	!false ? <Navigate to="/login" replace /> : <HomePage />
+				// 	!false ? <Navigate to="/login" replace /> : <MainPage />
 				// }
 				element={<MainPage />}
 			/>
 			<Route
 				exact
 				path="/login"
-				element={false ? <Navigate to="/" replace /> : <LoginPage />}
+				element={false ? <Navigate to="/profile" replace /> : <LoginPage />}
 			/>
 			<Route exact path="/register" element={<RegisterPage />} />
 		</Routes>
