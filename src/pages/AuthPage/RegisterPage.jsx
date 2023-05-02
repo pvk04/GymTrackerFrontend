@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { registration } from "../../services/authService";
 import Modal from "../../components/Modal/Modal";
 import LabelInput from "../../components/LabelInput/LabelInput";
 import Button from "../../components/Button/Button";
@@ -8,21 +10,33 @@ import styles from "./AuthPage.module.scss";
 import illustration from "../../assets/images/registrationIllustration.png";
 
 function RegisterPage() {
-	function register(e) {
+	const [email, setEmail] = useState("");
+	const [nickname, setNickname] = useState("");
+	const [dateBirth, setDateBirth] = useState("");
+	const [password, setPassword] = useState("");
+
+	function handleRegister(e) {
 		e.preventDefault();
 		console.log("регистрация");
+		registration(nickname, email, dateBirth, password)
+			.then(console.log)
+			.catch(function (error) {
+				console.log(error.toJSON());
+			});
 	}
 
 	return (
 		<Modal>
 			<div className={styles.container}>
-				<form className={styles.form} onSubmit={register}>
+				<form className={styles.form} onSubmit={handleRegister}>
 					<h1 className={styles.formHeader}>Регистрация</h1>
 					<div className={styles.formElement}>
 						<LabelInput
 							label="Email:"
 							inputType="email"
 							inputPlaceholder="Введите email"
+							state={email}
+							setState={setEmail}
 						/>
 					</div>
 					<div className={styles.formElement}>
@@ -30,6 +44,8 @@ function RegisterPage() {
 							label="Никнейм:"
 							inputType="text"
 							inputPlaceholder="Введите никнейм"
+							state={nickname}
+							setState={setNickname}
 						/>
 					</div>
 					<div className={styles.formElement}>
@@ -37,6 +53,8 @@ function RegisterPage() {
 							label="Дата рождения:"
 							inputType="text"
 							inputPlaceholder="12.12.2000"
+							state={dateBirth}
+							setState={setDateBirth}
 							onFocus={(e) => {
 								e.currentTarget.type = "date";
 							}}
@@ -50,9 +68,11 @@ function RegisterPage() {
 							label="Пароль:"
 							inputType="password"
 							inputPlaceholder="Введите пароль"
+							state={password}
+							setState={setPassword}
 						/>
 					</div>
-					<Button text="Зарегистрироваться" />
+					<Button text="Зарегистрироваться" type={"submit"} />
 					<Link
 						className={`${styles.formSecondary} ${styles.formSecondaryReg}`}
 						to="/login"

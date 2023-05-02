@@ -1,3 +1,7 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
+import { login } from "../../services/authService";
 import Modal from "../../components/Modal/Modal";
 import LabelInput from "../../components/LabelInput/LabelInput";
 import { Link } from "react-router-dom";
@@ -8,21 +12,32 @@ import styles from "./AuthPage.module.scss";
 import illustration from "../../assets/images/loginIllustration.png";
 
 function LoginPage() {
-	function login(e) {
+	const dispatch = useDispatch();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	async function handleLogin(e) {
+		console.log("login");
 		e.preventDefault();
-		console.log("вход");
+		login(email, password)
+			.then(console.log)
+			.catch(function (error) {
+				console.log(error);
+			});
 	}
 
 	return (
 		<Modal dialogClassName={styles.dialog}>
 			<div className={styles.container}>
-				<form className={styles.form} onSubmit={login}>
+				<form className={styles.form} onSubmit={handleLogin}>
 					<h1 className={styles.formHeader}>Вход</h1>
 					<div className={styles.formElement}>
 						<LabelInput
 							label="Email:"
 							inputType="email"
 							inputPlaceholder="Введите email"
+							state={email}
+							setState={setEmail}
 						/>
 					</div>
 					<div className={styles.formElement}>
@@ -30,6 +45,8 @@ function LoginPage() {
 							label="Пароль:"
 							inputType="password"
 							inputPlaceholder="Введите пароль"
+							state={password}
+							setState={setPassword}
 						/>
 						<Link
 							className={styles.formSecondary}

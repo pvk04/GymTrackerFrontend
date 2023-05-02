@@ -3,13 +3,13 @@ import styles from "./LabelInput.module.scss";
 
 function LabelInput({
 	label,
-	inputValue,
-	onChange,
 	onFocus,
 	onBlur,
 	inputType = "text",
 	inputPlaceholder = "",
 	gap = 5,
+	state,
+	setState,
 }) {
 	return (
 		<>
@@ -20,8 +20,10 @@ function LabelInput({
 				className={styles.input}
 				type={inputType}
 				placeholder={inputPlaceholder}
-				value={inputValue}
-				onChange={onChange}
+				value={state}
+				onChange={(e) => {
+					setState(e.target.value);
+				}}
 				onFocus={onFocus}
 				onBlur={onBlur}
 			/>
