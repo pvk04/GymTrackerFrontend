@@ -2,8 +2,9 @@
 @import "/src/scss/fonts.scss";
 
 .wrap {
-  padding: 0 0 35px 50px;
-  max-width: 410px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .element {
@@ -20,4 +21,17 @@
 .accept {
   @include bold-font;
   color: $confirm-green;
+}
+
+.password{
+  max-height: 40px;
+  margin-bottom: 25px;
+  max-width: 400px;
+  &Label{
+    @include bold-font;
+  }
+}
+
+.button{
+  margin: auto auto 0 auto;
 }

@@ -3,29 +3,29 @@ import styles from "./LabelInput.module.scss";
 
 function LabelInput({
 	label,
-	onFocus,
-	onBlur,
+	labelClassName = "",
 	inputType = "text",
 	inputPlaceholder = "",
 	gap = 5,
+	inputClassName = "",
 	state,
 	setState,
+	...rest
 }) {
 	return (
 		<>
-			<p className={styles.label} style={{ marginBottom: `${gap}px` }}>
+			<p className={`${styles.label} ${labelClassName}`} style={{ marginBottom: `${gap}px` }}>
 				{label}
 			</p>
 			<input
-				className={styles.input}
+				className={`${styles.input} ${inputClassName}`}
 				type={inputType}
 				placeholder={inputPlaceholder}
 				value={state}
 				onChange={(e) => {
 					setState(e.target.value);
 				}}
-				onFocus={onFocus}
-				onBlur={onBlur}
+				{...rest}
 			/>
 		</>
 	);

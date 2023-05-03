@@ -4,8 +4,25 @@
 .button{
     @include bold-font;
     height: 45px;
+    padding: 10px 30px;
     color: white;
-    background: $auth-color;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.primary {
+    background: $auth-color;
+}
+    
+.secondary {
+color: $font-color;
+    background: $secondary-grey;
+}
+    
+.success {
+    background: $confirm-green;
+}
+    
+.danger {
+    background: $danger-red;
 }
