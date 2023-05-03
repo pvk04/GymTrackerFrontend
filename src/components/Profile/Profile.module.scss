@@ -1,4 +1,23 @@
-.wrap{
-    padding: 0 0 35px 50px;
-    max-width: 410px;
+@import "/src/scss/colors.scss";
+@import "/src/scss/fonts.scss";
+
+.wrap {
+  padding: 0 0 35px 50px;
+  max-width: 410px;
+}
+
+.element {
+  @include regular-font;
+  margin-bottom: 25px;
+  &Header {
+    margin-bottom: 10px;
+  }
+  &Title {
+    @include bold-font;
+  }
+}
+
+.accept {
+  @include bold-font;
+  color: $confirm-green;
 }
