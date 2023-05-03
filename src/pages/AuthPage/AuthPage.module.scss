@@ -1,38 +1,41 @@
 @import "/src/scss/colors.scss";
 
-.container{
-    display: flex;
+.container {
+  display: flex;
 }
 
-.illustration{
-    display: inline-block;
-    border-radius: 0 10px 10px 0;
+.illustration {
+  height: 820px;
+  width: 585px;
+  max-width: 100%;
+  margin-right: -2px; // чтобы убрать белую линию справа от изображения
+  border-radius: 0 10px 10px 0;
 }
 
-.form{
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 77px 91px;
+  min-width: 435px;
+  &Header {
+    margin: 0 auto 50px auto;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  &Element {
+    margin-bottom: 40px;
+    font-size: 18px;
+  }
+  &Secondary {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 77px 91px;
-    min-width: 435px;
-    &Header{
-        margin: 0 auto 50px auto;
-        font-size: 24px;
-        font-weight: 700;
+    margin-top: 10px;
+    color: $auth-color;
+    text-decoration: none;
+    font-size: 16px;
+    &Reg {
+      justify-content: center;
+      margin-top: 15px;
     }
-    &Element{
-        margin-bottom: 40px;
-        font-size: 18px;
-    }
-    &Secondary{
-        display: flex;
-        margin-top: 10px;
-        color: $auth-color;
-        text-decoration: none;
-        font-size: 16px;
-        &Reg{
-            justify-content: center;
-            margin-top: 15px;
-        }
-    }
+  }
 }

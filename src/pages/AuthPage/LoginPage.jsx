@@ -9,64 +9,61 @@ import Button from "../../components/Button/Button";
 
 import styles from "./AuthPage.module.scss";
 
-import illustration from "../../assets/images/loginIllustration.png";
+import illustration from "../../assets/images/loginIllustration.svg";
 
 function LoginPage() {
-	const dispatch = useDispatch();
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-	async function handleLogin(e) {
-		console.log("login");
-		e.preventDefault();
-		login(email, password)
-			.then(console.log)
-			.catch(function (error) {
-				console.log(error);
-			});
-	}
+  async function handleLogin(e) {
+    console.log("login");
+    e.preventDefault();
+    login(email, password)
+      .then(console.log)
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
-	return (
-		<Modal dialogClassName={styles.dialog}>
-			<div className={styles.container}>
-				<form className={styles.form} onSubmit={handleLogin}>
-					<h1 className={styles.formHeader}>Вход</h1>
-					<div className={styles.formElement}>
-						<LabelInput
-							label="Email:"
-							inputType="email"
-							inputPlaceholder="Введите email"
-							state={email}
-							setState={setEmail}
-						/>
-					</div>
-					<div className={styles.formElement}>
-						<LabelInput
-							label="Пароль:"
-							inputType="password"
-							inputPlaceholder="Введите пароль"
-							state={password}
-							setState={setPassword}
-						/>
-						<Link
-							className={styles.formSecondary}
-							to="/password-reset"
-						>
-							Забыли пароль?
-						</Link>
-					</div>
-					<Button text="Войти" />
-					<Link
-						className={`${styles.formSecondary} ${styles.formSecondaryReg}`}
-						to="/register"
-					>
-						Регистрация
-					</Link>
-				</form>
-				<img src={illustration} alt="" />
-			</div>
-		</Modal>
-	);
+  return (
+    <Modal dialogClassName={styles.dialog}>
+      <div className={styles.container}>
+        <form className={styles.form} onSubmit={handleLogin}>
+          <h1 className={styles.formHeader}>Вход</h1>
+          <div className={styles.formElement}>
+            <LabelInput
+              label="Email:"
+              inputType="email"
+              inputPlaceholder="Введите email"
+              state={email}
+              setState={setEmail}
+            />
+          </div>
+          <div className={styles.formElement}>
+            <LabelInput
+              label="Пароль:"
+              inputType="password"
+              inputPlaceholder="Введите пароль"
+              state={password}
+              setState={setPassword}
+            />
+            <Link className={styles.formSecondary} to="/password-reset">
+              Забыли пароль?
+            </Link>
+          </div>
+          <Button text="Войти" />
+          <Link
+            className={`${styles.formSecondary} ${styles.formSecondaryReg}`}
+            to="/register"
+          >
+            Регистрация
+          </Link>
+        </form>
+        <img className={styles.illustration} src={illustration} alt="" />
+      </div>
+    </Modal>
+  );
 }
 
 export default LoginPage;

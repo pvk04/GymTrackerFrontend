@@ -7,87 +7,87 @@ import { Link } from "react-router-dom";
 
 import styles from "./AuthPage.module.scss";
 
-import illustration from "../../assets/images/registrationIllustration.png";
+import illustration from "../../assets/images/registrationIllustration.svg";
 
 function RegisterPage() {
-	const [email, setEmail] = useState("");
-	const [nickname, setNickname] = useState("");
-	const [dateBirth, setDateBirth] = useState("");
-	const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [dateBirth, setDateBirth] = useState("");
+  const [password, setPassword] = useState("");
 
-	function handleRegister(e) {
-		e.preventDefault();
-		console.log("регистрация");
-		registration(nickname, email, dateBirth, password)
-			.then(console.log)
-			.catch(function (error) {
-				console.log(error.toJSON());
-			});
-	}
+  function handleRegister(e) {
+    e.preventDefault();
+    console.log("регистрация");
+    registration(nickname, email, dateBirth, password)
+      .then(console.log)
+      .catch(function (error) {
+        console.log(error.toJSON());
+      });
+  }
 
-	return (
-		<Modal>
-			<div className={styles.container}>
-				<form className={styles.form} onSubmit={handleRegister}>
-					<h1 className={styles.formHeader}>Регистрация</h1>
-					<div className={styles.formElement}>
-						<LabelInput
-							label="Email:"
-							inputType="email"
-							inputPlaceholder="Введите email"
-							state={email}
-							setState={setEmail}
-						/>
-					</div>
-					<div className={styles.formElement}>
-						<LabelInput
-							label="Никнейм:"
-							inputType="text"
-							inputPlaceholder="Введите никнейм"
-							state={nickname}
-							setState={setNickname}
-						/>
-					</div>
-					<div className={styles.formElement}>
-						<LabelInput
-							label="Дата рождения:"
-							inputType="text"
-							inputPlaceholder="12.12.2000"
-							state={dateBirth}
-							setState={setDateBirth}
-							onFocus={(e) => {
-								e.currentTarget.type = "date";
-							}}
-							onBlur={(e) => {
-								e.currentTarget.type = "text";
-							}}
-						/>
-					</div>
-					<div className={styles.formElement}>
-						<LabelInput
-							label="Пароль:"
-							inputType="password"
-							inputPlaceholder="Введите пароль"
-							state={password}
-							setState={setPassword}
-						/>
-					</div>
-					<Button text="Зарегистрироваться" type={"submit"} />
-					<Link
-						className={`${styles.formSecondary} ${styles.formSecondaryReg}`}
-						to="/login"
-					>
-						Вход
-					</Link>
-				</form>
-				<img
-					className={styles.illustration}
-					src={illustration}
-					alt="running man illustration"
-				/>
-			</div>
-		</Modal>
-	);
+  return (
+    <Modal>
+      <div className={styles.container}>
+        <form className={styles.form} onSubmit={handleRegister}>
+          <h1 className={styles.formHeader}>Регистрация</h1>
+          <div className={styles.formElement}>
+            <LabelInput
+              label="Email:"
+              inputType="email"
+              inputPlaceholder="Введите email"
+              state={email}
+              setState={setEmail}
+            />
+          </div>
+          <div className={styles.formElement}>
+            <LabelInput
+              label="Никнейм:"
+              inputType="text"
+              inputPlaceholder="Введите никнейм"
+              state={nickname}
+              setState={setNickname}
+            />
+          </div>
+          <div className={styles.formElement}>
+            <LabelInput
+              label="Дата рождения:"
+              inputType="text"
+              inputPlaceholder="12.12.2000"
+              state={dateBirth}
+              setState={setDateBirth}
+              onFocus={(e) => {
+                e.currentTarget.type = "date";
+              }}
+              onBlur={(e) => {
+                e.currentTarget.type = "text";
+              }}
+            />
+          </div>
+          <div className={styles.formElement}>
+            <LabelInput
+              label="Пароль:"
+              inputType="password"
+              inputPlaceholder="Введите пароль"
+              state={password}
+              setState={setPassword}
+            />
+          </div>
+          <Button text="Зарегистрироваться" type={"submit"} />
+          <Link
+            className={`${styles.formSecondary} ${styles.formSecondaryReg}`}
+            to="/login"
+          >
+            Вход
+          </Link>
+        </form>
+        <img
+          className={styles.illustration}
+          src={illustration}
+          alt="running man illustration"
+        />
+      </div>
+    </Modal>
+  );
 }
 
 export default RegisterPage;
