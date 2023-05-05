@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { logout } from "../../services/authService";
+import { removeUser } from "../../store/slices/userSlice";
 import { NavLink } from "react-router-dom";
 
 import styles from "./AsideBar.module.scss";
@@ -8,7 +11,7 @@ import profile from "../../assets/images/profile.svg";
 import workout from "../../assets/images/workout.svg";
 import exercise from "../../assets/images/exercise.svg";
 import suplement from "../../assets/images/suplement.svg";
-import logout from "../../assets/images/logout.svg";
+import logoutIcon from "../../assets/images/logout.svg";
 
 const MenuItems = [
 	{ name: "Профиль", href: "/profile", icon: profile },
@@ -22,6 +25,12 @@ const MenuItems = [
 ];
 
 function AsideBar() {
+	const dispatch = useDispatch();
+
+	function handleLogout(){
+		logout().then(dispatch(removeUser())).catch(console.error);
+	}
+
 	return (
 		<aside className={styles.aside}>
 			<div className={styles.logo}>
@@ -45,8 +54,8 @@ function AsideBar() {
 					))}
 				</ul>
 			</nav>
-			<button className={styles.logout}>
-				<img src={logout} alt="" />
+			<button className={styles.logout} onClick={handleLogout}>
+				<img src={logoutIcon} alt="" />
 				<span>Выход</span>
 			</button>
 		</aside>

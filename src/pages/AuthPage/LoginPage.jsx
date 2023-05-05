@@ -17,12 +17,14 @@ function LoginPage() {
   const [password, setPassword] = useState("");
 
   async function handleLogin(e) {
-    console.log("login");
     e.preventDefault();
     login(email, password)
-      .then(console.log)
+      .then(({data}) => {
+        localStorage.setItem("token", data.accessToken);
+        dispatch(setUser({id: data.user.id, email: data.user.email, emailActivated: data.user.emailActivated}))
+      })
       .catch(function (error) {
-        console.log(error);
+        alert(error.response?.data?.message)
       });
   }
 

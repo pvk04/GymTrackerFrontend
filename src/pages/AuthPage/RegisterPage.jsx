@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
 import { registration } from "../../services/authService";
 import Modal from "../../components/Modal/Modal";
 import LabelInput from "../../components/LabelInput/LabelInput";
@@ -10,6 +12,7 @@ import styles from "./AuthPage.module.scss";
 import illustration from "../../assets/images/registrationIllustration.svg";
 
 function RegisterPage() {
+	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [nickname, setNickname] = useState("");
 	const [dateBirth, setDateBirth] = useState("");
@@ -29,11 +32,13 @@ function RegisterPage() {
 
 	function handleRegister(e) {
 		e.preventDefault();
-		console.log("регистрация");
 		registration(nickname, email, dateBirth, password)
-			.then(console.log)
-			.catch(function (error) {
-				console.log(error.toJSON());
+			.then(({data}) => {
+				localStorage.setItem("token", data.accessToken);
+				dispatch(setUser({id: data.user.id, email: data.user.email, emailActivated: data.user.emailActivated}));
+			})
+			.catch((error) => {
+				alert(error.response?.data?.message);
 			});
 	}
 
