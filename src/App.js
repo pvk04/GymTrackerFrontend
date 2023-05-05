@@ -1,13 +1,30 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { setUser } from "./store/slices/userSlice";
 import LoginPage from "./pages/AuthPage/LoginPage";
 import RegisterPage from "./pages/AuthPage/RegisterPage";
 import MainPage from "./pages/MainPage/MainPage";
+import { checkAuth } from "./services/authService";
 
 function App() {
+  const dispatch = useDispatch();
   const isAuth = useSelector(({ user }) => user.id);
-  console.log(isAuth);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      checkAuth()
+        .then(({ data }) => {
+          localStorage.setItem("token", data.accessToken);
+          console.log(data);
+          dispatch(setUser(data.user));
+        })
+        .catch(function (error) {
+          alert(error.response?.data?.message);
+        });
+    }
+  }, []);
+
   return (
     <Routes>
       <Route
