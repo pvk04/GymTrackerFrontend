@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import MeasureType from "../MeasureType/MeasureType";
 import LabelInput from "../LabelInput/LabelInput";
 import Button from "../Button/Button";
@@ -6,43 +7,53 @@ import Button from "../Button/Button";
 import styles from "./Profile.module.scss";
 
 function Profile() {
+	const {
+		email,
+		emailActivated,
+		height,
+		heightMeasure,
+		weight,
+		weightMeasure,
+		distanceMeasure 
+	} = useSelector(({user}) => user);
+
 	const [oldPassword, setOldPassword] = useState("");
 	const [newPassword, setNewPassword] = useState("");
-	const [heighMeasure, setHeighMeasure] = useState("0");
-	const [weightMeasure, setWeightMeasure] = useState("0");
-	const [distaneMeasure, setDistaneMeasure] = useState("0");
+	const [heightRadio, setHeightRadio] = useState(heightMeasure);
+	const [weightRadio, setWeightRadio] = useState(weightMeasure);
+	const [distanceRadio, setDistaneRadio] = useState(distanceMeasure);
 
 	return (
 		<div className={styles.wrap}>
 			<div className={styles.element}>
 				<div className={styles.elementHeader}>
-					<span className={styles.elementTitle}>Email:</span>
-					<span>test.test123@gmail.com</span>
+					<span className={styles.elementTitle}>Email: </span>
+					<span>{email}</span>
 				</div>
-				<span className={styles.accept}>Подтверждён</span>
+				<span className={emailActivated ? styles.confirmedTrue : styles.confirmedFalse}>{emailActivated ? "Подтверждён" : "Не подтвержден"}</span>
 			</div>
 			<MeasureType
 				className={styles.element}
 				name="рост"
-				value="187"
+				value={height}
 				edit
 				types={[
 					{ type: "M", value: "0" },
 					{ type: "Ft", value: "1" },
 				]}
-				state={heighMeasure}
-				setState={setHeighMeasure}
+				state={heightRadio}
+				setState={setHeightRadio}
 			/>
 			<MeasureType
 				name="вес"
-				value="68"
+				value={weight}
 				edit
 				types={[
 					{ type: "Kg", value: "0" },
 					{ type: "Lb", value: "1" },
 				]}
-				state={weightMeasure}
-				setState={setWeightMeasure}
+				state={weightRadio}
+				setState={setWeightRadio}
 			/>
 			<MeasureType
 				name="дистанция"
@@ -50,8 +61,8 @@ function Profile() {
 					{ type: "Km", value: "0" },
 					{ type: "Miles", value: "1" },
 				]}
-				state={distaneMeasure}
-				setState={setDistaneMeasure}
+				state={distanceRadio}
+				setState={setDistaneRadio}
 			/>
 			<LabelInput
 				label="Старый пароль:"

@@ -18,9 +18,15 @@
   }
 }
 
-.accept {
-  @include bold-font;
-  color: $confirm-green;
+.confirmed {
+  &True{
+    @include bold-font;
+    color: $confirm-green;
+  }
+  &False{
+    @include bold-font;
+    color: $danger-red;
+  }
 }
 
 .password{

@@ -3,12 +3,14 @@ import { Routes, Route, useHref, Navigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 
 import styles from "./FunctionalPanel.module.scss";
+import { useSelector } from "react-redux";
 
 function FunctionalPanel() {
 	const currentPage = useHref().slice(1);
+	const { nickname } = useSelector(({user}) => user);
 
 	const titles = {
-		profile: "Pvk04",
+		profile: nickname,
 		workouts: "Тренировки",
 		exercises: "Упражнения",
 		suplements: "Спортивные добавки",

@@ -6,7 +6,7 @@ import RegisterPage from "./pages/AuthPage/RegisterPage";
 import MainPage from "./pages/MainPage/MainPage";
 
 function App() {
-  const isAuth = useSelector(({ user }) => user.isAuth);
+  const isAuth = useSelector(({ user }) => user.id);
   console.log(isAuth);
   return (
     <Routes>

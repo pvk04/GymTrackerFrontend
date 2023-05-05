@@ -21,7 +21,8 @@ function LoginPage() {
     login(email, password)
       .then(({data}) => {
         localStorage.setItem("token", data.accessToken);
-        dispatch(setUser({id: data.user.id, email: data.user.email, emailActivated: data.user.emailActivated}))
+        console.log(data);
+        dispatch(setUser(data.user))
       })
       .catch(function (error) {
         alert(error.response?.data?.message)

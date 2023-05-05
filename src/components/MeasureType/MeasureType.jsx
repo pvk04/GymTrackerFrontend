@@ -31,7 +31,7 @@ function MeasureType({ name = "", value, types = [], edit, state, setState }) {
 								type="radio"
 								id={type}
 								value={value}
-								checked={state === value}
+								checked={state == value}
 								onChange={(e) => {
 									setState(e.target.value);
 								}}

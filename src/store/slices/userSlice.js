@@ -2,9 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   id: null,
+  nickname: null,
   email: null,
   emailActivated: null,
-  isAuth: false,
+  height: null,
+  heightMeasure: null,
+  weight: null,
+  weightMeasure: null,
+  distanceMeasure: null,
 };
 
 const userSlice = createSlice({
@@ -13,15 +18,25 @@ const userSlice = createSlice({
   reducers: {
     setUser(state, action) {
       state.id = action.payload.id;
+      state.nickname = action.payload.nickname;
       state.email = action.payload.email;
       state.emailActivated = action.payload.emailActivated;
-      state.isAuth = true;
+      state.height = action.payload.height;
+      state.heightMeasure = action.payload.heightMeasure;
+      state.weight = action.payload.weight;
+      state.weightMeasure = action.payload.weightMeasure;
+      state.distanceMeasure = action.payload.distanceMeasure;
     },
     removeUser(state) {
       state.id = null;
+      state.nickname = null;
       state.email = null;
       state.emailActivated = null;
-      state.isAuth = false;
+      state.height = null;
+      state.heightMeasure = null;
+      state.weight = null;
+      state.weightMeasure = null;
+      state.distanceMeasure = null;
     },
   },
 });
